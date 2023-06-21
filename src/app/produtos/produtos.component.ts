@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IProduto } from '../produtos';
 import { ProdutosService } from '../produtos.service';
 
@@ -7,21 +7,14 @@ import { ProdutosService } from '../produtos.service';
   templateUrl: './produtos.component.html',
   styleUrls: ['./produtos.component.css']
 })
-export class ProdutosComponent implements OnInit {
-  produtos: IProduto[] | undefined;
+export class ProdutosComponent {
+produtos: IProduto[] | undefined;
 
-  constructor(private produtosService: ProdutosService) {}
+constructor(private produtosService: ProdutosService){}
 
-  ngOnInit(): void {
-    this.produtosService.getAll().subscribe(
-      produtos => {
-        produtos = produtos;
-        console.log(this.produtos);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-  
+ngOnInit(): void {
+this.produtos = this.produtosService.getAll();
+console.log(this.produtos)
+}
+
 }

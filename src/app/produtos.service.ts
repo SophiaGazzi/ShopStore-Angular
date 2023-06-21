@@ -13,8 +13,9 @@ export class ProdutosService {
   constructor() { }
 
   getAll() {
-    return of(this.produtos).pipe(delay(200));
+    return this.produtos;
   }
+  
   
 
   getOne(id: number) {
